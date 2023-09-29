@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 type bankAccount interface {
-	checkingAccount | savingsAccount
 	getId() int
 }
 
@@ -14,22 +13,22 @@ type savingsAccount struct {
 	id int
 }
 
-type faceBookAccount struct {
-	id int
-}
-
-func (f faceBookAccount) getId() int {
-	return f.id
-}
 func (c checkingAccount) getId() int {
 	return c.id
 }
 
-func getBankAccountID[T bankAccount](b T) int {
-	return b.getId()
+func (s savingsAccount) getId() int {
+	return s.id
+}
+func getBankAccountID(account bankAccount) int {
+	return account.getId()
 }
 
 func main() {
-	myAccount := faceBookAccount{id: 5}
-	fmt.Println(getBankAccountID(myAccount))
+	myCheckingAccount := checkingAccount{id: 5}
+	fmt.Println(getBankAccountID(myCheckingAccount))
+
+	mySavingsAccount := savingsAccount{id: 6}
+	fmt.Println(getBankAccountID(mySavingsAccount))
+
 }
