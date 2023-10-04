@@ -20,7 +20,10 @@ func (c checkingAccount) getId() int {
 func (s savingsAccount) getId() int {
 	return s.id
 }
-func getBankAccountID(account bankAccount) int {
+
+// This function would behave identically if the type parameter were removed
+// And first argument's type was bankAccount
+func getBankAccountID[accountType bankAccount](account accountType) int {
 	return account.getId()
 }
 

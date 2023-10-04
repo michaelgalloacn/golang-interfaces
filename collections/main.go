@@ -20,14 +20,13 @@ func (c checkingAccount) getId() int {
 func (s savingsAccount) getId() int {
 	return s.id
 }
-func getBankAccountID(account bankAccount) int {
-	return account.getId()
-}
 
 func main() {
 	myCheckingAccount := checkingAccount{id: 5}
-	fmt.Println(getBankAccountID(myCheckingAccount))
-
 	mySavingsAccount := savingsAccount{id: 6}
-	fmt.Println(getBankAccountID(mySavingsAccount))
+
+	var accountSlice []bankAccount = []bankAccount{myCheckingAccount, mySavingsAccount}
+	for _, account := range accountSlice {
+		fmt.Println(account.getId())
+	}
 }

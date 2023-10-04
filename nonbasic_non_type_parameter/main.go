@@ -25,6 +25,7 @@ func (c checkingAccount) getId() int {
 	return c.id
 }
 
+// This function can not be compiled becaue bankAccount is a type constraint
 func getBankAccountID(b bankAccount) int {
 	return b.getId()
 }
